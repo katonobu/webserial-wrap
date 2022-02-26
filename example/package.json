@@ -1,0 +1,12 @@
+{
+  "name": "webserial-wrap-example",
+  "homepage": "https://katonobu.github.io/webserial-wrap",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "reload --dir .. --start-page /example/index.html"
+  },
+  "devDependencies": {
+    "reload": "^3.2.0"
+  }
+}
