@@ -1,0 +1,38 @@
+{
+  "name": "webserial-wrap",
+  "version": "0.0.2",
+  "description": "webserial-wrapper for browser application",
+  "author": "katonobu",
+  "license": "MIT",
+  "repository": "katonobu/webserial-wrap",
+  "browser": "webserial_wrap.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "reload --start-page /example/index.html",
+    "test": "echo 'Hello test'",
+    "test:lint": "eslint ."
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.0.4",
+    "reload": "^3.2.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
