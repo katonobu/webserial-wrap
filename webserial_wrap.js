@@ -37,7 +37,7 @@ const webSerialWrap = (() => {
       console.log(e)
     }
 
-    console.log('webSerialIo() is called')
+    console.log('webSerialWrap() is called')
 
     const updateCallbacks = ({ onOpen, onClose, onMessage, onError }) => {
       if (onOpen) {
@@ -114,9 +114,11 @@ const webSerialWrap = (() => {
           }
         } catch (e) {
           _onError(e)
+          console.log("Open Failed, may already used")
         }
       } catch (e) {
         _onError(e)
+        console.log("Open cancelled.")
       }
     }
 

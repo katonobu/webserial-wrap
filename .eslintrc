@@ -6,8 +6,15 @@
     "prettier/standard"
   ],
   "env": {
+    "jest": true,
     "browser": true
   },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true
+  },  
   "parserOptions": {
     "ecmaVersion": 2020,
     "ecmaFeatures": {
