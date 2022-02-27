@@ -77,6 +77,47 @@ Markdown
   - Reading CTS,DSR,,DCD, RI using SerialPort.getSignals() is not supported.
   - Writing RTS,DTR,BREAK using SerialPort.setSignals() is not supported.
     - Description of SerialPort.setSignals() in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/setSignals) may confusing with SerialPort.getSignals() in option fields. 
+- [ ] Add test
+  - Only function test by manual.
+  - Category
+    - 1 real port test
+      - open()
+        - Succeed by user action
+        - requestPortFilter
+          - empty, 1 element, 2 or more elements
+        - resolve at closed
+        - Error:Cancel at port select dialog.
+        - Error:Specified port has already opended
+      - close()
+        - Succeed by user action
+        - Error:if not opened.
+      - sendMessage()
+        - Error:if not opened.
+      - updateCallbacks()
+        - specified callback is updated.
+        - onOpen()
+          - Is called if open successfully.
+        - onClose()
+        　- Is called if close by user action.
+        　- Is called if close by USB disconnected.
+        - onError()
+          - Checked by each function.
+
+    - 2 real port and connect each other test
+      - open()
+        - option
+          - baudrate,databits,stopbits,parity,flowControl
+      - close()
+      - sendMessage()
+        - Send long message
+        - Send short messages in short interval.
+      - updateCallbacks()
+        - onMessage()
+          - Receive long message
+          - Receive short messages in short interval.
+
+## livedemo
+You can see livedemo from [here](https://katonobu.github.io/webserial-wrap/).
 
 ## Credits
 - Thanks to everyone who made Web Serial API for enabling this project to be possible.

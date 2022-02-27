@@ -28,7 +28,6 @@ const term = new Terminal({
 })
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // eslint-disable-next-line no-undef
   const { openPort, closePort, sendMessage, updateCallbacks } = webSerialWrap()
   let isConnected = false
 

@@ -87,20 +87,28 @@ const webSerialWrap = (() => {
             try {
               reader = port.readable.getReader()
               for (;;) {
-                //                    console.log('before reader.current.read()');
-                const { value, done } = await reader.read()
-                //                    console.log('return from reader.current.read()');
-                if (value) {
-                  _onMessage(value)
-                }
-                if (done) {
+                try {
+                  const { value, done } = await reader.read()
+                  if (value) {
+                    try {
+                      _onMessage(value)
+                    } catch (e) {
+                      _onError('Error while read message handling.', e)
+                      break
+                    }
+                  }
+                  if (done) {
+                    break
+                  }
+                } catch (e) {
+                  _onError('Error while reading, reader.read()', e)
                   break
                 }
               }
               reader.releaseLock()
               reader = undefined
             } catch (e) {
-              _onError(e)
+              _onError('Error while reading, getReader() or relaseLock()', e)
               break
             }
           }
@@ -109,16 +117,14 @@ const webSerialWrap = (() => {
               await port.close()
               markDisconnected()
             } catch (e) {
-              _onError(e)
+              _onError('Close Failed.', e)
             }
           }
         } catch (e) {
-          _onError(e)
-          console.log("Open Failed, may already used")
+          _onError('Open Failed, specified port may already used.', e)
         }
       } catch (e) {
-        _onError(e)
-        console.log("Open cancelled.")
+        _onError('Open cancelled.', e)
       }
     }
 
@@ -127,7 +133,11 @@ const webSerialWrap = (() => {
       const localPort = port
       port = undefined
       if (reader) {
-        await reader.cancel()
+        try {
+          await reader.cancel()
+        } catch (e) {
+          _onError('Error while read cancel.', e)
+        }
       }
 
       if (localPort) {
@@ -135,7 +145,7 @@ const webSerialWrap = (() => {
           await localPort.close()
           markDisconnected()
         } catch (e) {
-          _onError(e)
+          _onError('Error while closing port.', e)
         }
       }
     }
@@ -148,10 +158,13 @@ const webSerialWrap = (() => {
           await writer.write(message)
           writer.releaseLock()
         } catch (e) {
-          _onError(e)
+          _onError('Error while writing message.', e)
         }
       } else {
-        _onError(new Error("Can't send message, serial pot may not open."))
+        _onError(
+          'Try to write but port may not opened.',
+          new Error('Try to write but port may not opened.')
+        )
       }
     }
 

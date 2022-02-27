@@ -1,6 +1,6 @@
 {
   "name": "webserial-wrap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "webserial-wrapper for browser application",
   "author": "katonobu",
   "license": "MIT",
