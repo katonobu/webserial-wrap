@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import webSerialWrap  from "../webserial_wrap.js"
+import webSerialWrap from './webserial_wrap.js'
 
 // eslint-disable-next-line no-undef
 const term = new Terminal({
