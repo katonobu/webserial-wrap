@@ -162,4 +162,4 @@ const webSerialWrap = (() => {
   }
 })()
 
-// export default webSerialWrap
+export default webSerialWrap

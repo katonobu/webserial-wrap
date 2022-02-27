@@ -1,17 +1,16 @@
 {
   "name": "webserial-wrap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "webserial-wrapper for browser application",
   "author": "katonobu",
   "license": "MIT",
   "repository": "katonobu/webserial-wrap",
-  "browser": "dist/index.js",
+  "browser": "webserial_wrap.js",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "start": "babel src/webserial_wrap.js -o dist/index.js --source-maps inline -w",
-    "build": "babel src/webserial_wrap.js -o dist/index.js --source-maps inline",
+    "start": "reload --start-page /example/index.html",
     "test": "echo 'Hello test'",
     "test:lint": "eslint ."
   },
@@ -27,7 +26,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "reload": "^3.2.0"
   },
   "files": [
     "dist"
